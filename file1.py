@@ -5,48 +5,44 @@ def unitOfWeight(run):
     userInput = input("Would you want to kg or lbs?: ")
 
     if (userInput == "kg"):
-      weightTeller(True)
+      weightTeller(True, True)
     elif (userInput == "lbs"):
-      weightTeller(False)
+      weightTeller(False, True)
     else:
       print(f"Invalid input of {userInput}")
       unitOfWeight(run)
   else:
     print("Thank you for using our program")
 
-def weightTeller(kg):
-  if (kg):
-    kgInput = int(input("Input the weight in kgs: "))
+def weightTeller(kg, repeat):
+  print(repeat)
+  while repeat:
+    try:      
+      if kg:
+        kg = int(input("Please input kg: "))
+        lbs = int(kg * 2.2)
 
-    if (math.isnan(kgInput)):
-      print('hi')
+        print(f'{kg}kg is {lbs}lbs')
 
-    print(not isinstance(kgInput, (int, float)))
-    if (not isinstance(kgInput, (int, float))):
-      print('Does this run?')
-      weightTeller(kg)
-      return
+        return
+      else:
+        lbs = int(input("Please input lbs: "))
+        kg = int(lbs / 2.2)
 
-    kgInput = int(kgInput)
+        print(f'{lbs}lbs is {kg}kg')
 
-    print(kgInput)
-    lbs = round(kgInput * 2.2)
-    print(f"The weight of {kgInput}kg is {lbs}lbs")
-    toRedo()
-  else:
-    lbsInput = input("Input the weight in lbs: ")
+        return
+    except:
+      print(kg)
+      weightTeller(kg, False)
 
-    if (isinstance(lbsInput, (int, float))):
-      weightTeller(kg)
-
-    lbsInput = int(lbsInput)
-
-    kg = round(lbsInput / 2.2)
-    print(f"The weight of {lbsInput}lbs is {kg}lbs")
     toRedo()
 
 def toRedo():
-  userInput = bool(input("Would you like to redo? (True, False): "))
+  userInput = bool(int(input("Would you like to redo? (1, 0): ")))
+  print(userInput, type(userInput), 'asdf')
+  if (userInput): return
+
   unitOfWeight(userInput)
 
 unitOfWeight(True)

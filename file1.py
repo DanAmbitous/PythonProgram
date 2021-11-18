@@ -10,13 +10,17 @@ def unitOfWeight(run):
       weightTeller(False)
     else:
       print(f"Invalid input of {userInput}")
-      unitOfWeight()
+      unitOfWeight(run)
   else:
     print("Thank you for using our program")
 
 def weightTeller(kg):
   if (kg):
-    kgInput = float(input("Input the weight in kgs: "))
+    kgInput = int(input("Input the weight in kgs: "))
+
+    if (math.isnan(kgInput)):
+      print('hi')
+
     print(not isinstance(kgInput, (int, float)))
     if (not isinstance(kgInput, (int, float))):
       print('Does this run?')
@@ -46,3 +50,4 @@ def toRedo():
   unitOfWeight(userInput)
 
 unitOfWeight(True)
+

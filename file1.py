@@ -1,49 +1,52 @@
-import math
-
 def unitOfWeight(run):
-  if (run):
-    userInput = input("Would you want to kg or lbs?: ")
+  print(run)
 
-    if (userInput == "kg"):
-      weightTeller(True, True)
-    elif (userInput == "lbs"):
-      weightTeller(False, True)
+  if (run):
+    userInput = input("Would you want to kg(1) or lbs(0)?: ")
+
+    if (userInput == "1"):
+      weightTeller(True)
+    elif (userInput == "0"):
+      weightTeller(False)
     else:
       print(f"Invalid input of {userInput}")
       unitOfWeight(run)
   else:
-    print("Thank you for using our program")
+    return print("Thank you for using our program")
+    
 
-def weightTeller(kg, repeat):
-  print(repeat)
-  while repeat:
-    try:      
-      if kg:
-        kg = int(input("Please input kg: "))
-        lbs = int(kg * 2.2)
-
-        print(f'{kg}kg is {lbs}lbs')
-
-        return
-      else:
-        lbs = int(input("Please input lbs: "))
-        kg = int(lbs / 2.2)
-
-        print(f'{lbs}lbs is {kg}kg')
-
-        return
+def weightTeller(kg):
+  if (kg):
+    try:
+      kgInput = int(input("Please input kg: "))
+      print(f"{kgInput}kg is {round(kgInput * 2.2)}lbs")
     except:
-      print(kg)
-      weightTeller(kg, False)
+      weightTeller(kg)
+  else:
 
-    toRedo()
+    try:
+      lbsInput = int(input("Please input lbs: "))
+      print(f"{lbsInput}lbs is {round(lbsInput / 2.2)}kg")
+    except:
+      weightTeller(kg)
+  
+  print('hi')
+  toRedo()
 
 def toRedo():
-  userInput = bool(int(input("Would you like to redo? (1, 0): ")))
-  print(userInput, type(userInput), 'asdf')
-  if (userInput): return
+  try:
+    rerun = input("Would you like to rerun the program? (yes, no): ")
 
-  unitOfWeight(userInput)
+    if (rerun == "yes"):
+      unitOfWeight(True)
+    elif (rerun == "no"):
+      print(rerun, 'a')
+      unitOfWeight(False)
+    else:
+      print("Invalid response")
+      toRedo()
+  except:
+    print('Invalid Input')
+    toRedo()
 
 unitOfWeight(True)
-

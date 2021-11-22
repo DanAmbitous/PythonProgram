@@ -1,52 +1,35 @@
-def unitOfWeight(run):
-  print(run)
+class UnitType:
+  def __init__(self, name, inputName):
+      self.name = name
+      self.inputName = inputName
 
-  if (run):
-    userInput = input("Would you want to kg(1) or lbs(0)?: ")
+KG = UnitType('kilograms', '1')
+LBS = UnitType('pounds', '0')
 
-    if (userInput == "1"):
-      weightTeller(True)
-    elif (userInput == "0"):
-      weightTeller(False)
-    else:
-      print(f"Invalid input of {userInput}")
-      unitOfWeight(run)
+def weightUnitPickining():
+  print(f"Welcome to {KG.name} to {LBS.name} converter program!")
+
+  weightUnit = input(f"Would you like to convert from {KG.name}(1) or {LBS.name}(0)?: ")
+
+  if (weightUnit == KG.inputName or LBS.inputName):
+    weightConverter(weightUnit)
+  else: 
+    print('Your input is invalid')
+
+def weightConverter(weight):
+  print(weight)
+
+  redo()
+
+def redo():
+  restart = input('Would you like to restart the program? yes(1) no(0): ')
+
+  if (restart == '1'):
+    weightUnitPickining()
+  elif (restart == '0'):
+    print('Thanks for using the it, and have a nice day!')
   else:
-    return print("Thank you for using our program")
-    
+    print('Invalid input')
+    redo()
 
-def weightTeller(kg):
-  if (kg):
-    try:
-      kgInput = int(input("Please input kg: "))
-      print(f"{kgInput}kg is {round(kgInput * 2.2)}lbs")
-    except:
-      weightTeller(kg)
-  else:
-
-    try:
-      lbsInput = int(input("Please input lbs: "))
-      print(f"{lbsInput}lbs is {round(lbsInput / 2.2)}kg")
-    except:
-      weightTeller(kg)
-  
-  print('hi')
-  toRedo()
-
-def toRedo():
-  try:
-    rerun = input("Would you like to rerun the program? (yes, no): ")
-
-    if (rerun == "yes"):
-      unitOfWeight(True)
-    elif (rerun == "no"):
-      print(rerun, 'a')
-      unitOfWeight(False)
-    else:
-      print("Invalid response")
-      toRedo()
-  except:
-    print('Invalid Input')
-    toRedo()
-
-unitOfWeight(True)
+weightUnitPickining()

@@ -1,42 +1,27 @@
-import random
+def replay():
+  userInput = input('Thanks for playing do you want to play again? (y/n): ')
+  if (userInput == 'y'):
+    carFunctionalities()
+  elif(userInput == 'n'):
+    print('Thanks for playing have a great day!')
+  else:
+    print('Did not understand')
+    replay()
 
-def gameReplay():
-  replay = input('You are out of tries would like to start over? (y/n)?: ')
 
-  if (replay == "y"):
-    print("Good luck!")
-    guessingGame()
-  elif (replay == 'no'):
-    print("Thanks for playing see you later!")
-    return False
-  else: 
-    print("Didn't understand the input")
-    gameReplay()
+def carFunctionalities():
+  userInput = input('> ')
 
-def guessingGame():
-  secret_number = str(random.randint(0, 10))
-  tries = 3
-
-  print(secret_number)
-
-  print("Welcome to the guessing game")
-
-  while tries != -1:
-    print(f"You currently have {tries} tries, left")
-    
-    guessedNumber = input("Guess a number: ")
-
-    if (guessedNumber == secret_number):
-      print(f"Success you've guessed the secret number which is {guessedNumber}!")
-      break
-    elif (tries != 0):
-      print(f"The secret number isn't {guessedNumber}!")
-    else: 
-      replay = gameReplay()
-
-      if (not replay):
-        break
-
-    tries = tries - 1
-    
-guessingGame()
+  if (userInput == "start"):
+    print("The car has been started!")
+    replay()
+  elif(userInput == 'stop'):
+    print("The car has been stopped")
+    replay()
+  elif(userInput == 'quit'):
+    replay()
+  else:
+    print(f'Did not understand the command of {userInput}')
+    replay()
+  
+carFunctionalities()

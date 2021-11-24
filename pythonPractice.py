@@ -1,44 +1,46 @@
-class Options:
-  def __init__(self, toStart, toStop, toHelp, toQuit):
-      self.toStart = toStart,
-      self.toStop = toStop,
-      self.toHelp = toHelp,
-      self.toQuit = toQuit,
+cmds = 'start stop quit help'
+cmds = cmds.split(' ')
 
-cmds = Options('start', 'stop', 'help', 'quit')
-print(cmds.toStart)
-status = cmds.toStop
+def commandRunning():
+  carStatus = 'stop'
 
-print(cmds)
+  while True:
+    userCmd = input('> ')
+    
+    match userCmd:
+      case 'start':
+        if (carStatus == 'stop'):
+          print('Starting the car')
+          carStatus = 'start'
+        else:
+          print('Car is already running')
+      case 'stop':
+        if (carStatus == 'start'):
+          print('Stopping the car')
+          carStatus = 'stop'
+        else:
+          print('Car is already stopped')
+      case 'quit':
+        print('Thanks for playing')
+        playAgain(False)
+        return
+      case 'help':
+        print('The commands are start, stop, help, and quit')
+      case _:
+        print('Did not understand the command')
 
-def gameInit(): 
-  print(f"""The car's current status is {status}""")
+def playAgain(remessage):
+  if (remessage):
+    print('Did not understand')
 
-  userAction = input('> ')
+  toReplay = input('Would you like to replay? (y/n): ')
+  print(toReplay)
+  match toReplay:
+    case 'y':
+      commandRunning()
+    case 'n':
+      return
+    case _:
+      playAgain(True)
 
-  if (userAction == 'stop'):
-    userAction = cmds.toStop
-  elif (userAction == 'start'):
-    userAction = cmds.toStart
-  elif (userAction == 'help'):
-    userAction = cmds.toHelp
-  elif (userAction == 'quit'):
-    userAction = cmds.toQuit
-
-  if (status and userAction == cmds.toStop):
-    print(""" Car's already stopped """)
-  elif (status and userAction == cmds.toStart):
-    print(""" Car's already started """)
-  elif (status and userAction == cmds.toStop):
-    print(""" Car's halted """)
-  elif (status and userAction == cmds.toStart):
-    print(""" Car's started """)
-  else: 
-    print(status, userAction)
-
-  if (userAction == cmds.toHelp):
-    print('help')
-  elif (userAction == cmds.toQuit):
-    print('quit')
-
-gameInit()
+commandRunning()

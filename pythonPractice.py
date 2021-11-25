@@ -1,46 +1,28 @@
-cmds = 'start stop quit help'
-cmds = cmds.split(' ')
+code = [5, 2, 5, 2, 2]
+shape = 'خ'
+o = 0
 
-def commandRunning():
-  carStatus = 'stop'
+for i in code:
+  print('x' * i)
 
-  while True:
-    userCmd = input('> ')
-    
-    match userCmd:
-      case 'start':
-        if (carStatus == 'stop'):
-          print('Starting the car')
-          carStatus = 'start'
-        else:
-          print('Car is already running')
-      case 'stop':
-        if (carStatus == 'start'):
-          print('Stopping the car')
-          carStatus = 'stop'
-        else:
-          print('Car is already stopped')
-      case 'quit':
-        print('Thanks for playing')
-        playAgain(False)
-        return
-      case 'help':
-        print('The commands are start, stop, help, and quit')
-      case _:
-        print('Did not understand the command')
-
-def playAgain(remessage):
-  if (remessage):
-    print('Did not understand')
-
-  toReplay = input('Would you like to replay? (y/n): ')
-  print(toReplay)
-  match toReplay:
-    case 'y':
-      commandRunning()
-    case 'n':
-      return
-    case _:
-      playAgain(True)
-
-commandRunning()
+# for i in range(code[o] + 1):
+#   if (i == code[o]):
+#     print(shape * i)
+#     o += 1
+#     for ii in range(code[o] + 1):
+#       if (ii == code[o]):
+#         print(shape * ii) 
+#         o += 1
+#         for iii in range(code[o] + 1):
+#           if (iii == code[o]):
+#             print(shape * iii) 
+#             o += 1
+#             for iv in range(code[o] + 1):
+#               if (iv == code[o]):
+#                 print(shape * iv)   
+#                 o += 1
+#                 for v in range(code[o] + 1):
+#                   if (v == code[o]):
+#                     print(shape * v) 
+#                     o += 1
+          

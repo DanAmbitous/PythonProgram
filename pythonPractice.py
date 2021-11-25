@@ -1,20 +1,23 @@
-code = [5, 2, 5, 2, 2]
-shape = 'خ'
-o = 0
+code = [1, 1, 1, 5]
+# shape = 'خ'
+# o = 0
 
-# Method 1
+# # Method 1
 for x in code:
   output = ''
   for i in range(x):
-    output += 'a'
+    if (x == 1):
+      output += '|'
+    else:
+      output += '_'
   print(output)
 
 
-# Method 2
+# # Method 2
 for i in code:
   print('x' * i)
 
-# Method 1
+# # Method 1
 for i in range(code[o] + 1):
   if (i == code[o]):
     print(shape * i)

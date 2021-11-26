@@ -1,8 +1,31 @@
-numbers = [5, 10, 5, 12, 1, 23]
-uniqueNumbers = []
+emojiMapping = {
+  ':)': '😊',
+  ':(': '😔',
+  ':))': '😁',
+  ':D': '😀',
+  '<B': '❤️',
+  '^': '💪'
+}
 
-for number in numbers:
-  if (number not in uniqueNumbers):
-    uniqueNumbers.append(number)
+def emoijGiver():
+  userInput = input('Input your emotional state (or type in help): ') 
 
-print(uniqueNumbers)
+  if (userInput == 'help'):
+    print(""" 
+      ':)': '😊',
+      ':(': '😔',
+      ':))': '😁',
+      ':D': '😀',
+      '<B': '❤️',
+      '^': '💪'
+    """)
+    emoijGiver()
+
+  if (emojiMapping[userInput]):
+    print(f"I'm {emojiMapping[userInput]}")
+  else:
+    print("Unknown input")
+    emoijGiver()
+
+
+emoijGiver()

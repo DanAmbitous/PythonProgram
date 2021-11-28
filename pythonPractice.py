@@ -23,6 +23,15 @@ def emoijGiver():
 
   if (emojiMapping[userInput]):
     print(f"I'm {emojiMapping[userInput]}")
+
+    reDo = input('Would you like to rerun the program (y/n)? ')
+
+    if (reDo == 'y'):
+      emoijGiver()
+    elif (reDo == 'n'):
+      return
+    else:
+      emoijGiver()
   else:
     print("Unknown input")
     emoijGiver()
